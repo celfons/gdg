@@ -28,11 +28,13 @@ services:
             - '5432:5432'
         volumes:
             - '/srv/docker/postgresql:/var/lib/postgresql'
-    mysql:
-        image: datajoint/mysql
-        ports:
-          - "3306:3306"
+    mongodb:
+        image: mongo:latest
+        container_name: "mongodb"
         environment:
-          - MYSQL_ROOT_PASSWORD=123
+            - MONGO_DATA_DIR=/data/db
+            - MONGO_LOG_DIR=/dev/null
         volumes:
-          - ./data:/var/lib/mysql
+            - ./data/db:/data/db
+        ports:
+            - 27017:27017

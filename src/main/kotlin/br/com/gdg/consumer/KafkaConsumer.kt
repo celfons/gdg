@@ -16,7 +16,6 @@ class KafkaConsumer : Consumer {
             @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) key: String, message: String
     ) {
         val messageObject = Gson().fromJson(message, Message::class.java)
-        println(messageObject)
     }
 
 }

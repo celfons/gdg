@@ -1,1 +1,5 @@
 kafka-python
+flask
+flask_restful
+pymongo
+bson

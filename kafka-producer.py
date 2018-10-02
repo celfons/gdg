@@ -1,12 +1,24 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from confluent_kafka import Producer
+import pymongo
 import json
+from bson.json_util import dumps
 
 app = Flask(__name__)
 api = Api(app)
 
+myclient = pymongo.MongoClient("mongodb://0.0.0.0:27017")
+mydatabase = myclient["mydatabase"]
+mycollection = mydatabase["message"]
+
 class Kafka(Resource):
+
+    def get(self):
+
+        json_data = mycollection.find()
+
+        return dumps(json_data)
 
     def post(self):
 
@@ -14,23 +26,19 @@ class Kafka(Resource):
 
         p = Producer({'bootstrap.servers': '127.0.0.1:9092'})
 
-        def delivery_report(err, msg):
-
-            if err is not None:
-                print('Message delivery failed: {}'.format(err))
-            else:
-                print('Message delivered to {} [{}]'.format(msg.topic(), msg.partition()))
-
         key = 0
         for data in data_source:
             key+=1
             value = str(json.dumps(data))
             p.poll(0)
-            p.produce('mytopic', key=str(key),value=value, callback=delivery_report)
+            p.produce('mytopic', key=str(key),value=value)
 
         p.flush()
 
-        return jsonify(data_source)
+        mycollection.insert_many(data_source)
+
+
+        return jsonify(success="ok")
 
 api.add_resource(Kafka, '/kafka')
     
