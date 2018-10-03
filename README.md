@@ -1,21 +1,21 @@
-Simulação de um micro serviço:
+* Simulação de um micro serviço:
 
-1- Containers separados no compose
+- Containers separados no compose
 
-2- Kafka + Zookeeper
+- Kafka + Zookeeper
 
-3- Python Rest com base Mongo para leitura e produtor kafka
+- Python Rest com base Mongo para leitura e produtor kafka
 
-4- Kotlin Consumidor Kafka com base Postresql para escrita
+- Kotlin Consumidor Kafka com base Postresql para escrita
 
 
-USO:
+* USO:
 
-docker-compose build
+- docker-compose build
 
-docker-compose up
+- docker-compose up
 
-POST 0.0.0.0:8000
+- POST 0.0.0.0:8000
 [
     {
       "name": "marcel",
@@ -23,9 +23,9 @@ POST 0.0.0.0:8000
     }
 ]
 
-GET 0.0.0.0:8000
+- GET 0.0.0.0:8000
 
-postgresql
+* postgresql
 
-user:root
-password:123
+- user:root
+- password:123
