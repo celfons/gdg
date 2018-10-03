@@ -1,4 +1,4 @@
-kafka-python
+confluent-kafka
 flask
 flask_restful
 pymongo

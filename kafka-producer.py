@@ -8,15 +8,24 @@ from bson.json_util import dumps
 app = Flask(__name__)
 api = Api(app)
 
-myclient = pymongo.MongoClient("mongodb://0.0.0.0:27017")
-mydatabase = myclient["mydatabase"]
-mycollection = mydatabase["message"]
+class Mongo:
+
+    def __init__(self):
+        self.myclient = pymongo.MongoClient("mongodb://0.0.0.0:27017")
+        self.mydatabase = self.myclient["mydatabase"]
+        self.mycollection = self.mydatabase["message"]
+
+    def findAll(self):
+        return self.mycollection.find()
+
+    def save(self, data):
+        return self.mycollection.insert_many(data)
 
 class Kafka(Resource):
 
     def get(self):
 
-        json_data = mycollection.find()
+        json_data = Mongo().findAll()
 
         return dumps(json_data)
 
@@ -26,17 +35,14 @@ class Kafka(Resource):
 
         p = Producer({'bootstrap.servers': '127.0.0.1:9092'})
 
-        key = 0
         for data in data_source:
-            key+=1
             value = str(json.dumps(data))
             p.poll(0)
-            p.produce('mytopic', key=str(key),value=value)
+            p.produce('mytopic', key=str(1),value=value)
 
         p.flush()
 
-        mycollection.insert_many(data_source)
-
+        Mongo().save(data_source)
 
         return jsonify(success="ok")
 
