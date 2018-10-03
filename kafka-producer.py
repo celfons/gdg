@@ -11,7 +11,7 @@ api = Api(app)
 class Mongo:
 
     def __init__(self):
-        self.myclient = pymongo.MongoClient("mongodb://0.0.0.0:27017")
+        self.myclient = pymongo.MongoClient("mongodb://mongodb:27017")
         self.mydatabase = self.myclient["mydatabase"]
         self.mycollection = self.mydatabase["message"]
 
