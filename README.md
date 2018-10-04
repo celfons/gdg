@@ -19,7 +19,7 @@
 [
     {
       "name": "marcel",
-       "value":"ok"
+       "msg":"ok"
     }
 ]
 
