@@ -1,17 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from bson.json_util import dumps
-from mongo import Mongo
-from kafka import Kafka
+from service.kafka import KafkaService
+from service.crud_service import Service
 
 app = Flask(__name__)
 api = Api(app)
+
 
 class Kafka(Resource):
 
     def get(self):
 
-        json_data = Mongo().findAll()
+        json_data = Service().get()
 
         return dumps(json_data)
 
@@ -19,11 +20,12 @@ class Kafka(Resource):
 
         data_source = request.get_json()
 
-        Kafka().producer(data_source)
+        Service.save(data_source)
 
-        Mongo().save(data_source)
+        KafkaService().producer(data_source)
 
         return jsonify(success="ok")
+
 
 api.add_resource(Kafka, '/kafka')
 

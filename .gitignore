@@ -43,6 +43,10 @@ target/
 
 data/
 
+# Python
+
+__pycache__/
+
 application-local.properties
 bootstrap-local.properties
 realwave-com-command-application/data/
