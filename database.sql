@@ -1,10 +1,8 @@
-create database mydatabase;
-
-create table mydatabase.message
+create table public.message
 (
   id    serial not null
     constraint message_pkey
     primary key,
-  nome  text   not null,
+  name  text   not null,
   msg text   not null
 );
