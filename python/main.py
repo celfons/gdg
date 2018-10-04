@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from bson.json_util import dumps
-from service.kafka import KafkaService
-from service.crud_service import Service
+from services.kafka import KafkaService
+from services.crud_service import Service
 
 app = Flask(__name__)
 api = Api(app)

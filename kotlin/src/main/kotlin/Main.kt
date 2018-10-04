@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan("br.com.gdg")
-@EntityScan("br.com.gdg.model")
-@EnableJpaRepositories("br.com.gdg.repository")
+@EntityScan("br.com.gdg.models")
+@EnableJpaRepositories("br.com.gdg.repositories")
 
 open class Gdg
 

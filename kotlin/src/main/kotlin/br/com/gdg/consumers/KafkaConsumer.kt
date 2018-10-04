@@ -1,7 +1,7 @@
-package br.com.gdg.consumer
+package br.com.gdg.consumers
 
-import br.com.gdg.model.Message
-import br.com.gdg.repository.MessageRepository
+import br.com.gdg.models.Message
+import br.com.gdg.repositories.MessageRepository
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.annotation.KafkaListener

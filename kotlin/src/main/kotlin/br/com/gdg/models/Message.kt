@@ -1,4 +1,4 @@
-package br.com.gdg.model
+package br.com.gdg.models
 
 import javax.persistence.Column
 import javax.persistence.Entity

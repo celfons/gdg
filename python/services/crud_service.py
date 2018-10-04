@@ -1,4 +1,4 @@
-from repository.mongo import Mongo
+from repositories.mongo import Mongo
 
 
 class Service:

@@ -1,4 +1,4 @@
-package br.com.gdg.consumer
+package br.com.gdg.consumers
 
 interface Consumer {
 
