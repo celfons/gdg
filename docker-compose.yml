@@ -17,11 +17,18 @@ services:
             - '/var/run/docker.sock:/var/run/docker.sock'
         depends_on:
             - zookeeper
-    python:
-        build: .
-        command: python3 kafka-producer.py
+    kotlin:
+        build: ./kotlin
+        image: maven:3.5.0-jdk-8
         volumes:
-          - .:/code
+              - .:/tmp
+        depends_on:
+              - postgres
+    python:
+        build: ./python
+        command: python3 main.py
+        volumes:
+          - ./code
         ports:
           - "8000:8000"
         links:
