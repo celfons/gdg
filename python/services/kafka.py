@@ -8,7 +8,7 @@ class KafkaService:
         pass
 
     def producer(self, data_source):
-        p = Producer({'bootstrap.servers': '127.0.0.1:9092'})
+        p = Producer({'bootstrap.servers': 'kafka:9092'})
 
         for data in data_source:
             value = str(json.dumps(data))

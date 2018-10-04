@@ -1,7 +1,6 @@
 package br.com.gdg.consumers
 
 import br.com.gdg.models.Message
-import br.com.gdg.repositories.MessageRepository
 import br.com.gdg.services.MessageService
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,7 +14,7 @@ class KafkaConsumer : Consumer {
 
     @Autowired private lateinit var messageService: MessageService
 
-    @KafkaListener(topics = ["mytopic"], groupId = "mygroup")
+    @KafkaListener(topics = ["\${topic}"], groupId = "\${group}")
     override fun listen(
             @Header(KafkaHeaders.RECEIVED_TOPIC) topic: String,
             @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) key: String, message: String

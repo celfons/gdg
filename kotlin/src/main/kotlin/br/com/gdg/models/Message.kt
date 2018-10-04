@@ -16,5 +16,5 @@ data class Message(
         @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "SEQ")
         val id: Long? = null,
         @Column(name="name") val name: String? = null,
-        @Column(name="value") val value: String? = null
+        @Column(name="msg") val text: String? = null
 )

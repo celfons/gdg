@@ -20,9 +20,9 @@ class Kafka(Resource):
 
         data_source = request.get_json()
 
-        Service.save(data_source)
-
         KafkaService().producer(data_source)
+
+        Service.save(data_source)
 
         return jsonify(success="ok")
 
