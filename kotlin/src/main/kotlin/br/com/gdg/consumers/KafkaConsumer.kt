@@ -2,6 +2,7 @@ package br.com.gdg.consumers
 
 import br.com.gdg.models.Message
 import br.com.gdg.repositories.MessageRepository
+import br.com.gdg.services.MessageService
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.annotation.KafkaListener
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component
 @Component
 class KafkaConsumer : Consumer {
 
-    @Autowired private lateinit var messageRepository: MessageRepository
+    @Autowired private lateinit var messageService: MessageService
 
     @KafkaListener(topics = ["mytopic"], groupId = "mygroup")
     override fun listen(
@@ -23,9 +24,9 @@ class KafkaConsumer : Consumer {
         saveMessage(messageObject)
     }
 
-    private fun saveMessage(messageObject: Message?) {
+    private fun saveMessage(messageObject: Message) {
         try {
-            messageRepository.save(messageObject)
+            messageService.save(messageObject)
         } catch (e: Exception) {
             println(e)
         }
