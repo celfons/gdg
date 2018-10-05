@@ -1,4 +1,4 @@
-package br.com.gdg.consumers
+package br.com.gdg.consumers.contracts
 
 interface Consumer {
 

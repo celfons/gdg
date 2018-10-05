@@ -1,4 +1,4 @@
-package br.com.gdg.services
+package br.com.gdg.services.contracts
 
 import br.com.gdg.models.Message
 

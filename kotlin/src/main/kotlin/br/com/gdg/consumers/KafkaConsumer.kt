@@ -1,5 +1,6 @@
 package br.com.gdg.consumers
 
+import br.com.gdg.consumers.contracts.Consumer
 import br.com.gdg.models.Message
 import br.com.gdg.services.MessageService
 import com.google.gson.Gson

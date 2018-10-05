@@ -2,6 +2,7 @@ package br.com.gdg.services
 
 import br.com.gdg.models.Message
 import br.com.gdg.repositories.MessageRepository
+import br.com.gdg.services.contracts.Service
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
