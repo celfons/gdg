@@ -49,7 +49,6 @@ services:
         ports:
             - '5432:5432'
         volumes:
-           - './docker-entrypoint-initdb.d'
            - '/srv/docker/postgresql:/var/lib/postgresql'
     mongodb:
         image: 'mongo:latest'
