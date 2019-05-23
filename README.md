@@ -1,13 +1,3 @@
-* Simulação de um micro serviço:
-
-- Containers separados no compose
-
-- Kafka + Zookeeper
-
-- Python Rest com base Mongo para leitura e produtor kafka
-
-- Kotlin Consumidor Kafka com base Postresql para escrita
-
 
 * USO:
 
