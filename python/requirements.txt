@@ -1,4 +1,4 @@
 confluent-kafka
 flask
 flask_restful
-pymongo==3.7.1
+pymongo==4.6.3
