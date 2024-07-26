@@ -25,4 +25,4 @@ jobs:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
           CLIENT_REALM: zup
-          QC_SLUG: sast-rqc
+          QC_SLUG: code-review-marcel
