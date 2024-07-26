@@ -1,7 +1,9 @@
 name: Security Check
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main  # Substitua 'main' pela branch de destino do seu merge, se necessário
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
