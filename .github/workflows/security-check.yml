@@ -3,10 +3,10 @@ name: StackSpot AI Remote Quick Command
 on:
   push:
     branches:
-      - master
+      - dev
   pull_request:
     branches:
-      - master
+      - dev
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -23,20 +23,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Check for Java file changes
-      id: java_changes
-      run: |
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.kt$'; then
-            echo "Kotlin files changed"
-            echo "kotlin_files_changed=true" >> $GITHUB_ENV
-          else
-            echo "No Kotlin files changed"
-            echo "kotlin_files_changed=false" >> $GITHUB_ENV
-          fi
-
+      
     - uses: GuillaumeFalourd/stackspot-ai-security-action-poc@main
-      if: env.kotlin_files_changed == 'true'
       id: rqc
       with:
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
