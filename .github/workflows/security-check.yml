@@ -28,3 +28,6 @@ jobs:
           CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
           CLIENT_REALM: zup
           QC_SLUG: code-review-marcel
+
+      - name: Check Remote Quick Command answer
+        run: echo ${{ toJSON(steps.run.outputs.rqc_result) }}
