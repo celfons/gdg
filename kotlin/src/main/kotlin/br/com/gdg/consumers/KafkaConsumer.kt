@@ -23,7 +23,6 @@ class KafkaConsumer : Consumer {
         val messageObject = Gson().fromJson(message, Message::class.java)
         saveMessage(messageObject)
     }
-
     
     private fun saveMessage(messageObject: Message) {
         try {
