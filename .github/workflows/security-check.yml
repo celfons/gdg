@@ -17,8 +17,12 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      
+      - name: Generate Input Data
+        id: input_data
+        run: |
+          echo "::set-output name=data::$(echo 'some generated data')"
 
       - name: Run Security Action
         uses: GuillaumeFalourd/stackspot-ai-security-action-poc@main
@@ -28,6 +32,7 @@ jobs:
           CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
           CLIENT_REALM: zup
           QC_SLUG: code-review-marcel
+          INPUT_DATA: ${{ steps.input_data.outputs.data }}
 
       - name: Check Remote Quick Command answer
         run: echo ${{ toJSON(steps.run.outputs.rqc_result) }}
