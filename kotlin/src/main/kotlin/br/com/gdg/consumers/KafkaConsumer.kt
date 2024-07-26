@@ -24,6 +24,7 @@ class KafkaConsumer : Consumer {
         saveMessage(messageObject)
     }
 
+    
     private fun saveMessage(messageObject: Message) {
         try {
             messageService.save(messageObject)
