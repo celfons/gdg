@@ -27,16 +27,16 @@ jobs:
     - name: Check for Java file changes
       id: java_changes
       run: |
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.java$'; then
-            echo "Java files changed"
-            echo "java_files_changed=true" >> $GITHUB_ENV
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.kt$'; then
+            echo "Kotlin files changed"
+            echo "kotlin_files_changed=true" >> $GITHUB_ENV
           else
-            echo "No Java files changed"
-            echo "java_files_changed=false" >> $GITHUB_ENV
+            echo "No Kotlin files changed"
+            echo "kotlin_files_changed=false" >> $GITHUB_ENV
           fi
 
     - uses: GuillaumeFalourd/stackspot-ai-security-action-poc@main
-      if: env.java_files_changed == 'true'
+      if: env.kotlin_files_changed == 'true'
       id: rqc
       with:
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
